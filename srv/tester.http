@@ -1,0 +1,105 @@
+### Get the Service document.
+http://localhost:4004/odata/v4/EmployeeService
+ 
+###Get service metadata document
+http://localhost:4004/odata/v4/EmployeeService/$metadata
+ 
+###Get all Employee Data
+http://localhost:4004/odata/v4/EmployeeService/EmployeeSet
+ 
+###Get all the Employees whose name starts with ‘S’.
+http://localhost:4004/odata/v4/EmployeeService/EmployeeSet?$filter=contains(nameFirst,'S')
+ 
+ 
+###Get the top 2 employees, use orderby salaryAmount.
+http://localhost:4004/odata/v4/EmployeeService/EmployeeSet?$top=2&$orderby=salaryAmount desc
+
+###CREATE an employee with salary <50000 & currency code USD. POST
+POST http://localhost:4004/odata/v4/EmployeeService/EmployeeSet
+Content-Type: application/json
+ 
+{
+  "nameFirst": "Prasad",
+  "nameMiddle": "M",
+  "nameLast": "Thatha",
+  "nameInitials": null,
+  "Gender": "M",
+  "Language": "E",
+  "phoneNumber": "+919390345875",
+  "Email": "prasadthatha2@gmail.com",
+  "loginName": "PrasadThatha",
+  "Currency_code": "USD",
+  "salaryAmount": 18000,
+  "accountNumber": "32109876",
+  "bankId": "66665555",
+  "bankName": "My Bank of London"
+}
+###•	CREATE an employee with salary >50000 & currency code USD.
+POST http://localhost:4004/odata/v4/EmployeeService/EmployeeSet
+Content-Type: application/json
+ 
+{
+  "nameFirst": "Prasad",
+  "nameMiddle": "M",
+  "nameLast": "Thatha",
+  "nameInitials": null,
+  "Gender": "M",
+  "Language": "E",
+  "phoneNumber": "+919390345875",
+  "Email": "prasadthatha2@gmail.com",
+  "loginName": "PrasadThatha",
+  "Currency_code": "USD",
+  "salaryAmount": 999999,
+  "accountNumber": "32109876",
+  "bankId": "66665555",
+  "bankName": "My Bank of London"
+}
+
+###•	CREATE an employee with salary <50000 & currency code EUR.
+POST http://localhost:4004/odata/v4/EmployeeService/EmployeeSet
+Content-Type: application/json
+ 
+{
+  "nameFirst": "Prasad",
+  "nameMiddle": "M",
+  "nameLast": "Thatha",
+  "nameInitials": null,
+  "Gender": "M",
+  "Language": "E",
+  "phoneNumber": "+919390345875",
+  "Email": "prasadthatha2@gmail.com",
+  "loginName": "PrasadThatha",
+  "Currency_code": "EUR",
+  "salaryAmount": 18000,
+  "accountNumber": "32109876",
+  "bankId": "66665555",
+  "bankName": "My Bank of London"
+}
+
+###Update employee data - PATCH
+PATCH http://localhost:4004/odata/v4/EmployeeService/EmployeeSet/02BD2137-0890-1EEA-A6C2-BB55C19787FB
+Content-Type: application/json
+ 
+{
+    "nameFirst": "PrasadNani",
+    "loginName": "Thatha",
+    "salaryAmount":999,
+    "Currency_code": "EUR"
+}
+ 
+###Update employee data - PATCH-2
+PATCH http://localhost:4004/odata/v4/EmployeeService/EmployeeSet/02BD2137-0890-1EEA-A6C2-BB55C19787FB
+Content-Type: application/json
+ 
+{  
+    "loginName": "Thatha",
+    "salaryAmount":1000,
+    "Currency_code": "EUR"
+}
+
+###Dlete employee data - DELETE
+DELETE http://localhost:4004/odata/v4/EmployeeService/EmployeeSet/02BD2137-0890-1EEA-A6C2-BB55C19887FB
+ 
+###Deleete employee data - DELETE-2
+DELETE http://localhost:4004/odata/v4/EmployeeService/EmployeeSet/02BD2137-0890-1EEA-A6C2-BB55C198C7FB
+ 
